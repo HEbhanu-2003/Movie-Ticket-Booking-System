@@ -1,0 +1,299 @@
+﻿<!-- Login Page-->
+
+<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="Ticket_Booking_System.MainWindow"
+        Title="Login" 
+        Height="693" 
+        Width="499"
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None">
+
+    <!-- Buttons Style Change 1 -->
+
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="20"  Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true" Margin="0,15,-35,0">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#EAB01E"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#EAB01E"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#F1CA68"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#F1CA68"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Buttons Style Change 2 -->
+
+        <Style x:Key="FocusVisual1">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background1" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border1" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background1" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border1" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background1" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border1" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background1" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border1" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground1" Color="#FF838383"/>
+        <Style x:Key="BoxStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual1}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background1}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border1}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="Transparent"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="Transparent"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="Transparent"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="Transparent"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background1}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border1}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground1}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <!-- Background Image -->
+
+    <Window.Background>
+
+        <ImageBrush ImageSource="/Images/Background 2.png"/>
+
+    </Window.Background>
+   
+
+
+    <Grid Margin="0,-46,0,0">
+
+        <!-- StackPanel -->
+
+        <StackPanel 
+            Margin="-1,44,-2,644" 
+            Background="Red"/>
+
+        <!-- Label Login To Book Your Fav Movie -->
+        
+        <Label 
+            Content="Login To Book Your Fav Movie" 
+            Background="red"
+            HorizontalAlignment="Left" 
+            Margin="101,46,0,0" 
+            VerticalAlignment="Top" 
+            FontSize="18" 
+            Foreground="Yellow"
+            FontStyle="Italic" 
+            FontFamily="Arial Black" Height="34"/>
+
+        <!-- Login User Image -->
+
+        <Image HorizontalAlignment="Center" 
+               Height="201" 
+               Margin="0,170,0,0" 
+               VerticalAlignment="Top" 
+               Width="329" 
+               Source="/Images/User1.png" 
+               Stretch="Fill"/>
+
+        <!-- TextBlock Username -->
+
+
+        <TextBlock
+            Text="Username"
+            Foreground="FloralWhite"
+            FontSize="15"
+            FontWeight="Medium"
+            FontFamily="Arial Black"
+            Margin="105,399,282,306">
+
+        </TextBlock>
+
+        <!-- TextBox Username -->
+
+        <TextBox x:Name="txt_UserName" 
+                 FontSize="16"
+                 FontWeight="Medium"
+                 FontFamily="Montserrat"
+                 Foreground="White"
+                 CaretBrush="LightGray"
+                 BorderBrush="Yellow"
+                 BorderThickness="0,0,0,2"
+                 VerticalContentAlignment="Center"
+                 Margin="106,423,97,281"
+                 Padding="25,0,0,0">
+
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Images/user_text.png"
+                            Stretch="None"
+                            AlignmentX="Left"/>
+            </TextBox.Background>
+
+        </TextBox>
+
+        <!-- TextBlock Password -->
+
+        <TextBlock
+            Text="Password"
+            Foreground="FloralWhite"
+            FontSize="15"
+            FontWeight="Medium"
+            FontFamily="Arial Black"
+            Margin="101,494,286,211">
+
+        </TextBlock>
+
+        <!-- TextBox Password -->
+
+        <PasswordBox 
+                 x:Name="txt_Password" 
+                 FontSize="16"
+                 FontWeight="Medium"
+                 FontFamily="Montserrat"
+                 Foreground="White"
+                 CaretBrush="LightGray"
+                 BorderBrush="Yellow"
+                 BorderThickness="0,0,0,2"
+                 VerticalContentAlignment="Center"
+                 Margin="102,516,91,188"
+                 Padding="25,0,0,0">
+
+            <PasswordBox.Background>
+                <ImageBrush ImageSource="/Images/pass_text.png"
+                            Stretch="None"
+                            AlignmentX="Left"/>
+            </PasswordBox.Background>
+
+        </PasswordBox>
+
+
+        <!-- Login Button -->
+
+        <Button Style="{DynamicResource RoundedButtonStyle}" 
+                Content="LOG IN" 
+                HorizontalAlignment="Left" 
+                Margin="174,603,0,0" 
+                VerticalAlignment="Top"
+                Height="47"
+                Width="106"
+                Cursor="Hand"
+                Background="Red"
+                Foreground="White"
+                FontStyle="Italic"
+                FontFamily="Arial Black"
+                FontSize="20" Click="Login_Click"/>
+
+        <!-- Exite Button -->
+
+        <Button 
+                Style="{DynamicResource BoxStyle}" 
+                x:Name="Exite"  
+                HorizontalAlignment="Left" 
+                Margin="446,46,0,0" 
+                VerticalAlignment="Top" 
+                Cursor="Hand"
+                Height="34"
+                Width="33"
+                FontSize="15"
+                Background="Red"
+                Foreground="White" 
+                RenderTransformOrigin="0.375,-0.25" 
+                FontFamily="Arial Black"
+                Click="Exite_Click" 
+                Content="X"/>
+
+        <!-- Don't have an account? Register now Button -->
+
+        <Button 
+                Style="{DynamicResource BoxStyle}"
+                x:Name="GoRegister_Click"
+                Content="Don't have an account? Register now" 
+                HorizontalAlignment="Left"
+                Margin="126,661,0,0" 
+                VerticalAlignment="Top"
+                BorderThickness="0"
+                Cursor="Hand"
+                Height="32"
+                FontSize="13"
+                Foreground="FloralWhite"
+                Background="Transparent" 
+                Width="238"
+                Click="Button_Click_1" 
+                FontFamily="Arial Black"/>
+
+    </Grid>
+
+</Window>

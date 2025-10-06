@@ -1,0 +1,627 @@
+﻿<!-- Booking_System.Add_Food_Drinks Page -->
+
+<Window x:Class="Ticket_Booking_System.Add_Food_Drinks"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ticket_Booking_System"
+        mc:Ignorable="d"
+        Title="Add_Food_Drinks"
+        Height="699" 
+        Width="493" 
+        WindowStyle="None" 
+       WindowStartupLocation="CenterScreen">
+
+
+
+    <Window.Resources>
+
+
+        <!-- Buttons Style Change 1 -->
+
+        <Style x:Key="FocusVisual1">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background1" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border1" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background1" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border1" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background1" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border1" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background1" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border1" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground1" Color="#FF838383"/>
+        <Style x:Key="BoxStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual1}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background1}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border1}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="Transparent"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="Transparent"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="Transparent"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="Transparent"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background1}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border1}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground1}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Button Style 2-->
+
+
+
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#EAB01E"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#EAB01E"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#F1CA68"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#F1CA68"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+
+
+    <!-- Backgroun Image -->
+
+
+    <Window.Background>
+
+        <ImageBrush ImageSource="/Images/Food_DrinksItem.png"/>
+
+    </Window.Background>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Pizza Image -->
+
+        <Image HorizontalAlignment="Left" 
+            Height="111" 
+            Margin="283,492,0,0" 
+            VerticalAlignment="Top" 
+            Width="188" 
+            Source="/Images/Pizza.png" 
+            Stretch="Fill" RenderTransformOrigin="0.52,-0.163">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.47"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.513"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <!-- Popcorn Image -->
+
+        <Image HorizontalAlignment="Left" 
+            Height="113" 
+            Margin="34,494,0,0" 
+            VerticalAlignment="Top" 
+            Width="187" 
+            Source="/Images/Popcorn.png" 
+            Stretch="Fill" 
+            RenderTransformOrigin="0.52,-0.163">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.47"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.513"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <!-- Soft Drink Image -->
+
+        <Image HorizontalAlignment="Left" 
+            Height="115" 
+            Margin="279,332,0,0" 
+            VerticalAlignment="Top" 
+            Width="188" 
+            Source="/Images/Soft_Drinks.png" 
+            Stretch="Fill" 
+            RenderTransformOrigin="0.52,-0.163">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.47"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.513"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <!-- Chips Image -->
+
+        <Image HorizontalAlignment="Left" 
+            Height="117" 
+            Margin="32,333,0,0" 
+            VerticalAlignment="Top" 
+            Width="187" 
+            Source="/Images/Chips.png" 
+            Stretch="Fill" 
+            RenderTransformOrigin="0.52,-0.163">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.47"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.513"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <!-- Hot Dog Image -->
+
+        <Image HorizontalAlignment="Left" 
+            Height="116" 
+            Margin="279,173,0,0" 
+            VerticalAlignment="Top" 
+            Width="188" 
+            Source="/Images/Hot_Dogs.png" 
+            Stretch="Fill" 
+            RenderTransformOrigin="0.52,-0.163">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.47"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.513"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <!-- Burger Image -->
+
+        <Image HorizontalAlignment="Left" 
+            Height="122" 
+            Margin="30,169,0,0" 
+            VerticalAlignment="Top" 
+            Width="193" 
+            Source="/Images/Burger.png" 
+            Stretch="Fill" 
+            RenderTransformOrigin="0.52,-0.163">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.47"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.513"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+
+        <!-- Red Stack Panel -->
+
+        <StackPanel 
+            Margin="-2,-2,0,650" 
+            Background="Red">
+
+        </StackPanel>
+
+        <!-- Label Add Fav Food Or Drinks Your Booking -->
+
+        <Label Content="Add Fav Food Or Drinks Your Booking "
+            Background="red"
+            HorizontalAlignment="Left" 
+            Margin="69,6,0,0" 
+            VerticalAlignment="Top" 
+            FontSize="18" 
+            Foreground="Yellow"
+            FontStyle="Italic" 
+            FontFamily="Arial Black" Height="30"/>
+
+        <!-- ComboBox 1 Burger Queantity Select  -->
+
+        <ComboBox 
+            x:Name="Combox1" 
+            HorizontalAlignment="Left" 
+            Margin="71,291,0,0" 
+            VerticalAlignment="Top" 
+            Width="98" 
+            Background="Yellow"  
+            SelectionChanged="ComboBox_SelectionChanged" 
+            FontFamily="Arial Black"
+            FontSize="15"
+            Cursor="Hand"/>
+
+        <!-- ComboBox 2 Hot Dog Queantity Select  -->
+
+        <ComboBox 
+            x:Name="Combox2" 
+            HorizontalAlignment="Left" 
+            Margin="331,289,0,0" 
+            VerticalAlignment="Top" 
+            Width="98" 
+            Background="Yellow"  
+            SelectionChanged="ComboBox_SelectionChanged" 
+            FontFamily="Arial Black"
+            FontSize="15"
+            Cursor="Hand"/>
+
+        <!-- ComboBox 3 Tetos Queantity Select  -->
+
+        <ComboBox 
+            x:Name="Combox3" 
+            HorizontalAlignment="Left" 
+            Margin="77,450,0,0" 
+            VerticalAlignment="Top" 
+            Width="98" 
+            Background="Yellow" 
+            RenderTransformOrigin="-0.112,2.391"  
+            SelectionChanged="ComboBox_SelectionChanged" 
+            FontFamily="Arial Black"
+            FontSize="15"
+            Cursor="Hand"/>
+
+        <!-- ComboBox 4 Soft Drinks Queantity Select  -->
+
+        <ComboBox 
+            x:Name="Combox4" 
+            HorizontalAlignment="Left" 
+            Margin="329,447,0,0" 
+            VerticalAlignment="Top" 
+            Width="98" Background="Yellow" 
+            RenderTransformOrigin="-0.112,2.391" 
+            SelectionChanged="ComboBox_SelectionChanged" 
+            FontFamily="Arial Black"
+            FontSize="15"
+            Cursor="Hand"/>
+
+        <!-- ComboBox 5 Popcorn Queantity Select  -->
+
+        <ComboBox 
+            x:Name="Combox5" 
+            HorizontalAlignment="Left" 
+            Margin="76,607,0,0" 
+            VerticalAlignment="Top" 
+            Width="98" 
+            Background="Yellow" 
+            RenderTransformOrigin="-0.112,2.391" 
+            SelectionChanged="ComboBox_SelectionChanged" 
+            FontFamily="Arial Black"
+            FontSize="15"
+            Cursor="Hand"/>
+
+        <!-- ComboBox 6 Pizza Queantity Select  -->
+
+        <ComboBox 
+            x:Name="Combox6" 
+            HorizontalAlignment="Left" 
+            Margin="330,604,0,0" 
+            VerticalAlignment="Top" 
+            Width="98" 
+            Background="Yellow" 
+            RenderTransformOrigin="-0.112,2.391" 
+            SelectionChanged="ComboBox_SelectionChanged" 
+            FontFamily="Arial Black"
+            FontSize="15"
+            Cursor="Hand"/>
+
+        <!-- Label Id  -->
+
+        <Label 
+            Content="ID :" 
+            Margin="7,56,0,0" 
+            VerticalAlignment="Top"
+            Width="57" 
+            Foreground="White" 
+            FontFamily="Arial Black" 
+            FontSize="20" 
+            FontWeight="Medium" 
+            Height="43" 
+            HorizontalAlignment="Left"
+            RenderTransformOrigin="0.565,1.872" />
+
+        <!-- TextBox Id  -->
+
+        <TextBox 
+            x:Name="txt_Id"  
+            FontSize="16" 
+            HorizontalAlignment="Left"
+            Margin="59,60,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="109" Height="28" 
+            FontFamily="Arial Black" 
+            IsReadOnly="True" 
+            IsReadOnlyCaretVisible="True" 
+            TextChanged="txt_Id_TextChanged"/>
+
+        <!-- Label Full Total  -->
+
+        <Label 
+            Content="Full Total :" 
+            Margin="0,59,0,0" 
+            VerticalAlignment="Top"
+            Width="130" 
+            Foreground="White" 
+            FontFamily="Arial Black" 
+            FontSize="20" 
+            FontWeight="Medium" 
+            Height="43" 
+            HorizontalAlignment="Center"
+            RenderTransformOrigin="0.565,1.872" />
+
+        <!-- TextBox Full Total  -->
+
+        <TextBox 
+            x:Name="txt_total"  
+            FontSize="16" 
+            HorizontalAlignment="Left"
+            Margin="314,63,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="149" Height="28" 
+            FontFamily="Arial Black" 
+            IsReadOnly="True" 
+            IsReadOnlyCaretVisible="True" 
+             TextChanged="txt_Id_TextChanged" 
+             RenderTransformOrigin="0.563,0.625"/>
+
+        <!-- Label Tickets Price  -->
+
+        <Label 
+            Content="Tickets Price :" 
+            Margin="-1,106,0,0" 
+            VerticalAlignment="Top" 
+            Width="201" 
+            Foreground="White" 
+            FontFamily="Arial Black" 
+            FontSize="20" 
+            FontWeight="Medium" 
+            Height="43" 
+            HorizontalAlignment="Left" 
+            RenderTransformOrigin="0.565,1.872" />
+
+        <!-- TextBox Tickets Amount  -->
+
+        <TextBox 
+            x:Name="txt_tickets_amount"  
+            FontSize="16" 
+            HorizontalAlignment="Left" 
+            Margin="167,110,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="112" 
+            Height="28" 
+            FontFamily="Arial Black"
+            IsReadOnly="True" 
+            IsReadOnlyCaretVisible="True"
+            RenderTransformOrigin="0.629,3.339"/>
+
+        <!-- Button Add_FoodandDrinks  -->
+
+        <Button 
+            Style="{DynamicResource RoundedButtonStyle}" 
+            x:Name="Add_FoodandDrinks"  
+            Content="Add Item"
+            HorizontalAlignment="Left" 
+            Margin="52,641,0,0" 
+            VerticalAlignment="Top"
+            Height="37"
+            Width="161"
+            Cursor="Hand"
+            Background="Red"
+            Foreground="White"
+            FontStyle="Normal"
+            FontFamily="Arial Black"
+            FontSize="20"
+            Click="AddItem_Click"/>
+
+        <!-- Button Skeep_Payment  -->
+
+        <Button 
+            Style="{DynamicResource RoundedButtonStyle}" 
+            x:Name="Skeep_Payment"  
+            Content="Skeep &gt;&gt;&gt;"
+            HorizontalAlignment="Left" 
+            Margin="296,639,0,0" 
+            VerticalAlignment="Top"
+            Height="37"
+            Width="161"
+            Cursor="Hand"
+            Background="Red"
+            Foreground="White"
+            FontStyle="Normal"
+            FontFamily="Arial Black"
+            FontSize="20"
+            Click="Skeep_Payment_Click" 
+            RenderTransformOrigin="0.491,0.162"/>
+
+        <!-- Label Pricel  -->
+
+        <Label 
+            Content="Pricel :" 
+            Margin="289,108,0,0" 
+            VerticalAlignment="Top"
+            Width="94" 
+            Foreground="White" 
+            FontFamily="Arial Black" 
+            FontSize="20" 
+            FontWeight="Medium" 
+            Height="43" 
+            HorizontalAlignment="Left"
+            RenderTransformOrigin="0.565,1.872" />
+
+        <!-- Label txt_select_item_price  -->
+
+        <TextBox 
+            x:Name="txt_select_item_price"  
+            FontSize="16"
+            Margin="377,110,29,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" Height="28" 
+            FontFamily="Arial Black" 
+            IsReadOnly="True" 
+            IsReadOnlyCaretVisible="True" 
+            TextChanged="txt_Id_TextChanged" 
+            RenderTransformOrigin="0.836,1.125"/>
+
+        <!-- Label Hot Bog Price -->
+
+        <Label 
+            Content="Hot Bog      Rs.475.00" 
+            HorizontalAlignment="Left" 
+            Margin="278,174,0,0" 
+            VerticalAlignment="Top" 
+            FontSize="15" 
+            Width="188" 
+            Foreground="ForestGreen" 
+            FontFamily="Arial Black" 
+            Height="30"/>
+
+        <!-- Label Burger Price -->
+
+        <Label 
+            Content="Burger      Rs.550.00" 
+            HorizontalAlignment="Left" 
+            Margin="33,170,0,0" 
+            VerticalAlignment="Top" 
+            FontSize="15" 
+            Width="188" 
+            Foreground="ForestGreen" 
+            FontFamily="Arial Black" 
+            Height="30"/>
+
+        <!-- Label Tetos Price -->
+
+        <Label 
+            Content="Tetos            Rs.75.00" 
+            HorizontalAlignment="Left" 
+            Margin="32,0,0,0" 
+            VerticalAlignment="Center" 
+            FontSize="15" 
+            Width="188" 
+            Foreground="ForestGreen" 
+            FontFamily="Arial Black" 
+            Height="30"/>
+
+        <!-- Label Drinks Price -->
+
+        <Label 
+            Content="Drinks        Rs.150.00" 
+            HorizontalAlignment="Left" 
+            Margin="277,333,0,0" 
+            VerticalAlignment="Top" 
+            FontSize="15" 
+            Width="188" 
+            Foreground="ForestGreen" 
+            FontFamily="Arial Black" 
+            Height="30"/>
+
+        <!-- Label Popcorn Price -->
+
+        <Label 
+            Content="Popcorn     Rs.175.00" 
+            HorizontalAlignment="Left" 
+            Margin="34,496,0,0" 
+            VerticalAlignment="Top" 
+            FontSize="15" 
+            Width="188"
+            Foreground="ForestGreen" 
+            FontFamily="Arial Black" 
+            Height="30"/>
+
+        <!-- Label Piza Price -->
+
+        <Label 
+            Content="PIzza        Rs.1200.00" 
+            HorizontalAlignment="Left" 
+            Margin="285,493,0,0" 
+            VerticalAlignment="Top" 
+            FontSize="15" 
+            Width="186" 
+            Foreground="ForestGreen" 
+            FontFamily="Arial Black" 
+            Height="30"/>
+
+
+    </Grid>
+</Window>

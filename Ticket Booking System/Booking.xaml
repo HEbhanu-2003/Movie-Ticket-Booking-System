@@ -1,0 +1,352 @@
+﻿<!-- Booking Page-->
+
+<Window x:Class="Ticket_Booking_System.Booking"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ticket_Booking_System" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Booking" 
+        Height="699" 
+        Width="493" 
+        WindowStyle="None" 
+        WindowStartupLocation="CenterScreen">
+
+    <!-- Buttons Style Change 1 -->
+
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#EAB01E"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#EAB01E"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#F1CA68"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#F1CA68"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <!-- Background Image -->
+
+    <Window.Background>
+
+        <ImageBrush ImageSource="/Images/Background 1 (1).png"/>
+
+    </Window.Background>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- TextBlock ID -->
+
+        <TextBlock
+            Text="ID"
+            Foreground="Black"
+            FontSize="15"
+            FontWeight="Medium"
+            FontFamily="Arial Black"
+            Margin="89,204,363,463">
+
+        </TextBlock>
+
+        <!-- TextBox ID -->
+
+        <TextBox x:Name="txt_ID" 
+                 FontSize="16"
+                 FontWeight="Medium"
+                 FontFamily="Montserrat"
+                 Foreground="White"
+                 CaretBrush="LightGray"
+                 BorderBrush="Yellow"
+                 BorderThickness="0,0,0,2"
+                 VerticalContentAlignment="Center"
+                 Margin="85,222,108,438"
+                 Padding="25,0,0,0">
+
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Images/id_txt.png"
+                            Stretch="None"
+                            AlignmentX="Left"/>
+            </TextBox.Background>
+
+        </TextBox>
+
+
+        <!-- TextBlock Name -->
+
+        <TextBlock
+            Text="Name"
+            Foreground="Black"
+            FontSize="15"
+            FontWeight="Medium"
+            FontFamily="Arial Black"
+            Margin="86,276,0,392" 
+            RenderTransformOrigin="0.509,-0.78" 
+            HorizontalAlignment="Left" 
+            Width="106">
+
+        </TextBlock>
+
+        <!-- TextBox Name -->
+
+        <TextBox x:Name="Movie_Title" 
+                 FontSize="16"
+                 FontWeight="Medium"
+                 FontFamily="Montserrat"
+                 Foreground="White"
+                 CaretBrush="LightGray"
+                 BorderBrush="Yellow"
+                 BorderThickness="0,0,0,2"
+                 VerticalContentAlignment="Center"
+                 Margin="82,294,111,363"
+                 Padding="25,0,0,0" RenderTransformOrigin="0.514,-0.921" IsReadOnly="True" IsReadOnlyCaretVisible="True">
+
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Images/title.png"
+                            Stretch="None"
+                            AlignmentX="Left"/>
+            </TextBox.Background>
+
+        </TextBox>
+
+
+        <!-- Label Date -->
+
+        <Label Content="Date"
+            HorizontalAlignment="Left" 
+            Margin="79,353,0,0" 
+            VerticalAlignment="Top"
+            FontSize="15" 
+            FontFamily="Arial Black" Height="32" RenderTransformOrigin="0.337,0.625"/>
+
+
+        <!-- DatePicker -->
+
+        <DatePicker x:Name="Date" 
+            HorizontalAlignment="Left" 
+            Margin="82,390,0,0"
+            VerticalAlignment="Top" 
+            RenderTransformOrigin="0.492,6.667"
+            Height="25" Width="301"
+            FontSize="15"
+            Cursor="Hand"/>
+
+
+        <!-- TextBlock Tickets -->
+
+        <TextBlock
+            Text="Ticket"
+            Foreground="Black"
+            FontSize="15"
+            FontWeight="Medium"
+            FontFamily="Arial Black"
+            Margin="86,441,0,227" 
+            RenderTransformOrigin="0.509,-0.78" 
+            HorizontalAlignment="Left" 
+            Width="106">
+
+        </TextBlock>
+
+
+
+        <!-- TextBlock Price -->
+
+        <TextBlock
+            Text="Price"
+            Foreground="Black"
+            FontSize="15"
+            FontWeight="Medium"
+            FontFamily="Arial Black"
+            Margin="89,504,0,164" 
+            RenderTransformOrigin="0.509,-0.78" 
+            HorizontalAlignment="Left" 
+            Width="106">
+
+        </TextBlock>
+
+        <!-- TextBox Price -->
+
+        <TextBox x:Name="txt_total" 
+                 FontSize="16"
+                 FontWeight="Medium"
+                 FontFamily="Montserrat"
+                 Foreground="White"
+                 CaretBrush="LightGray"
+                 BorderBrush="Yellow"
+                 BorderThickness="0,0,0,2"
+                 VerticalContentAlignment="Center"
+                 Margin="85,525,108,132"
+                 Padding="25,0,0,0" IsReadOnly="True" IsReadOnlyCaretVisible="True">
+
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Images/price_txt.png"
+                            Stretch="None"
+                            AlignmentX="Left"/>
+            </TextBox.Background>
+
+        </TextBox>
+
+
+        <!-- Button Back -->
+
+        <Button Style="{DynamicResource RoundedButtonStyle}" 
+                x:Name="Back_1" 
+                Content="Back" 
+                HorizontalAlignment="Left" 
+                Margin="85,612,0,0" 
+                VerticalAlignment="Top"
+                Height="31"
+                Width="104"
+                Cursor="Hand"
+                Background="Red"
+                Foreground="White"
+                FontStyle="Normal"
+                FontFamily="Arial Black"
+                FontSize="20" 
+                Click="Back"/>
+
+        <!-- Button Book -->
+
+        <Button Style="{DynamicResource RoundedButtonStyle}"  
+                x:Name="Book_1" 
+                Content="Book" 
+                HorizontalAlignment="Left" 
+                Margin="213,612,0,0" 
+                VerticalAlignment="Top"
+                Height="31"
+                Width="104"
+                Cursor="Hand"
+                Background="Red"
+                Foreground="White"
+                FontStyle="Normal"
+                FontFamily="Arial Black"
+                FontSize="20" 
+                Click="Book" />
+
+        <!-- Button Edite -->
+
+        <Button Style="{DynamicResource RoundedButtonStyle}"
+                x:Name="Edite_1"  
+                Content="Edit"
+                HorizontalAlignment="Left" 
+                Margin="336,612,0,0" 
+                VerticalAlignment="Top"
+                Height="31"
+                Width="104"
+                Cursor="Hand"
+                Background="Red"
+                Foreground="White"
+                FontStyle="Normal"
+                FontFamily="Arial Black"
+                FontSize="20"
+                Click="Edite"/>
+
+        <!-- Tickets Image -->
+
+        <Image HorizontalAlignment="Left" 
+               Height="187" 
+               Margin="141,7,0,0" 
+               VerticalAlignment="Top"
+               Width="198" 
+               RenderTransformOrigin="1,0.45"
+               Source="/Images/Login.png"/>
+
+        <!-- ComboBox Ticket Select -->
+
+        <ComboBox 
+            x:Name="combobox1"
+            SelectionChanged="comboBoxNumbers_SelectionChanged" 
+            HorizontalAlignment="Left" 
+            Margin="86,470,0,0" 
+            VerticalAlignment="Top" 
+            Width="111" 
+            Background="Yellow"
+            FontFamily="Arial Black"
+            FontSize="15"
+            Cursor="Hand">
+            <ComboBox.Items>
+                <sys:String>1</sys:String>
+                <sys:String>2</sys:String>
+                <sys:String>3</sys:String>
+                <sys:String>4</sys:String>
+                <sys:String>5</sys:String>
+                <sys:String>6</sys:String>
+                <sys:String>7</sys:String>
+                <sys:String>8</sys:String>
+                <sys:String>9</sys:String>
+                <sys:String>10</sys:String>
+                <sys:String>11</sys:String>
+                <sys:String>12</sys:String>
+                <sys:String>13</sys:String>
+                <sys:String>14</sys:String>
+                <sys:String>15</sys:String>
+                <sys:String>16</sys:String>
+                <sys:String>17</sys:String>
+                <sys:String>18</sys:String>
+                <sys:String>19</sys:String>
+                <sys:String>20</sys:String>
+                <sys:String>21</sys:String>
+                <sys:String>22</sys:String>
+                <sys:String>23</sys:String>
+                <sys:String>24</sys:String>
+                <sys:String>25</sys:String>
+            </ComboBox.Items>
+
+        </ComboBox>
+
+
+
+    </Grid>
+
+</Window>

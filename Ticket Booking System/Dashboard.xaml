@@ -1,0 +1,593 @@
+﻿<!-- Dashboard Page-->
+
+<Window x:Class="Ticket_Booking_System.Dashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ticket_Booking_System"
+        mc:Ignorable="d"
+        Title="Dashboard" 
+        Height="699" 
+        Width="493" 
+        WindowStyle="None" 
+        WindowStartupLocation="CenterScreen">
+
+    <!-- Buttons Style Change 1 -->
+
+
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#EAB01E"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#EAB01E"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#F1CA68"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#F1CA68"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Buttons Style Change 1 -->
+
+        <Style x:Key="FocusVisual1">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background1" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border1" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background1" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border1" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background1" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border1" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background1" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border1" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground1" Color="#FF838383"/>
+        <Style x:Key="BoxStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual1}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background1}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border1}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#EAB01E"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#EAB01E"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#F1CA68"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#F1CA68"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background1}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border1}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground1}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <!-- Background Image -->
+
+    <Window.Background>
+
+        <ImageBrush ImageSource="/Images/Dashboard.png"/>
+
+    </Window.Background>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="-5,0,370,0"
+         Background="Red"/>
+
+        <!-- Dashboard Image -->
+
+        <Image HorizontalAlignment="Right" 
+               Height="100" 
+               Margin="0,24,377,0" 
+               VerticalAlignment="Top" 
+               Width="100"
+               Source="/Images/DashboardImage.png" 
+               RenderTransformOrigin="0.6,0.5"/>
+
+
+        <!-- StackPanel -->
+
+        <StackPanel 
+        Margin="108,0,0,636"
+        Background="LightGray"/>
+
+
+        <!-- Label Welcome, Admin -->
+
+        <Label Content="Welcome, Admin" 
+            Background="Red"
+            VerticalAlignment="Top"
+            Margin="124,8,161,0" 
+            FontSize="15" 
+            Foreground="White"
+            FontStyle="Italic" 
+            Height="30" 
+            RenderTransformOrigin="0.25,0.667" 
+            FontFamily="Arial Black"/>
+
+        <!-- Admin Image -->
+
+        <Image HorizontalAlignment="Right" 
+            Height="43" 
+            Margin="0,2,91,0" 
+            VerticalAlignment="Top" 
+            Width="44"
+            Source="/Images/Admin2.png" 
+            RenderTransformOrigin="0.8,0.455"/>
+
+
+        <!-- DataGrid (Registration  List) -->
+
+        <DataGrid 
+            x:Name="DataGrid3" 
+            SelectionChanged="DataGrid_SelectionChanged" 
+            Margin="138,146,12,450" 
+            Cursor="Hand" 
+            FontFamily="Arial Black"
+            Background="FloralWhite">
+
+
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Turquoise"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                </Style>
+            </DataGrid.Resources>
+
+        </DataGrid>
+
+        <!-- Label Ticket Booking List -->
+
+        <Label Content="Tiket Booking List" 
+            Background="White"
+            VerticalAlignment="Top"
+            Margin="137,247,180,0" 
+            FontSize="15" 
+            Foreground="Black"
+            FontStyle="Italic" 
+            Height="28" 
+            RenderTransformOrigin="0.262,-0.333" 
+            FontFamily="Arial Black"/>
+
+        <!-- DataGrid (Ticket Booking List) -->
+
+        <DataGrid 
+            x:Name="DataGrid1" 
+            SelectionChanged="DataGrid_SelectionChanged" 
+            Margin="136,275,16,319" 
+            Cursor="Hand" 
+            FontFamily="Arial Black"
+            Background="FloralWhite">
+
+
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Turquoise"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                </Style>
+            </DataGrid.Resources>
+
+        </DataGrid>
+
+        <!-- DataGrid (Payment List) -->
+
+        <DataGrid 
+            x:Name="DataGrid2" 
+            SelectionChanged="DataGrid_SelectionChanged" 
+            Margin="135,531,17,56" 
+            Cursor="Hand" 
+            FontFamily="Arial Black"
+            Background="FloralWhite">
+
+
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Turquoise"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                </Style>
+            </DataGrid.Resources>
+
+        </DataGrid>
+
+
+        <!-- Button Exite -->
+
+        <Button Style="{DynamicResource BoxStyle}" 
+            x:Name="Exite_1" 
+            Content="Exite" 
+            HorizontalAlignment="Left" 
+            Margin="427,7,0,0" 
+            VerticalAlignment="Top" 
+            Cursor="Hand"
+            Height="35"
+            Width="48"
+            FontSize="13"
+            Background="Red"
+            Foreground="White" 
+            RenderTransformOrigin="0.375,-0.25" 
+            FontFamily="Arial Black"
+            Click="Exite"/>
+
+
+        <!-- Final Report (Registraion,Tickets Booking,Payments) Details -->
+
+        <Button Style="{DynamicResource RoundedButtonStyle}" 
+            x:Name="Reports_View"
+            Content="Report" 
+            HorizontalAlignment="Left"
+            Margin="6,262,0,0" 
+            VerticalAlignment="Top" 
+            Cursor="Hand"
+            Height="30"
+            Width="94"
+            FontSize="18"
+            Background="LightGray"
+            Foreground="Black" 
+            Click="Report_View_1" 
+            FontFamily="Arial Black"/>
+
+        <!-- Button Income -->
+
+        <Button Style="{DynamicResource RoundedButtonStyle}"
+            x:Name="Income_View" 
+            Content="Income" 
+            HorizontalAlignment="Left"
+            Margin="7,315,0,0" 
+            VerticalAlignment="Top" 
+            Cursor="Hand"
+            Height="30"
+            Width="92"
+            FontSize="18"
+            Background="LightGray"
+            Foreground="Black" 
+            RenderTransformOrigin="0.25,0.5"
+            FontFamily="Arial Black"
+            Click="Income_View_1"/>
+
+        <!-- Label Total Income -->
+
+        <Label Content="Total Income Rs." 
+            Background="White"
+            VerticalAlignment="Top"
+            Margin="135,638,0,0" 
+            FontSize="15" 
+            Foreground="Black"
+            FontStyle="Italic" 
+            Height="30" 
+            RenderTransformOrigin="0.262,-0.333" 
+            FontFamily="Arial Black" HorizontalAlignment="Left" Width="148"/>
+
+        <!-- TextBox Income -->
+
+        <Label x:Name="txt_Income" Content="" 
+              Background="White"
+              VerticalAlignment="Top"
+              Margin="280,638,0,0" 
+              FontSize="18" 
+              Foreground="Black"
+              FontStyle="Italic" 
+              Height="30" 
+               RenderTransformOrigin="0.262,-0.333" 
+             FontFamily="Arial Black" HorizontalAlignment="Left" Width="171"/>
+
+        <!-- Label Payment Details -->
+
+        <Label Content="Payment List" 
+            Background="White"
+            VerticalAlignment="Top"
+            Margin="137,503,178,0" 
+            FontSize="15" 
+            Foreground="Black"
+            FontStyle="Italic" 
+            Height="28" 
+            RenderTransformOrigin="0.262,-0.333" 
+            FontFamily="Arial Black"/>
+
+        <!-- Button Export (Registration Details)-->
+
+        <Button 
+            x:Name="ExportToPDF" 
+            Content="Export To PDF" 
+            HorizontalAlignment="Left" 
+            Margin="333,119,0,0" 
+            VerticalAlignment="Top" 
+            Width="111" 
+            FontFamily="Arial Black" 
+            FontSize="12" 
+            Height="23" 
+            Background="Turquoise" 
+            Cursor="Hand" 
+            Click="ExportToPDF_Click"/>
+
+        <!-- Button Export (Payments Details)-->
+
+        <Button 
+            x:Name="ExportToPDF2" 
+            Content="Export To PDF" 
+            HorizontalAlignment="Left" 
+            Margin="333,505,0,0" 
+            VerticalAlignment="Top" 
+            Width="111" 
+            FontFamily="Arial Black" 
+            FontSize="12" 
+            Height="24" 
+            Background="Turquoise" 
+            Cursor="Hand" 
+            Click="ExportToPDF2_Click"/>
+
+
+        <!-- Button Export (Tiket Booking List Details)-->
+
+        <Button 
+            x:Name="ExportToPDF3" 
+            Content="Export To PDF" 
+            HorizontalAlignment="Left" 
+            Margin="330,248,0,0" 
+            VerticalAlignment="Top" 
+            Width="111" 
+            FontFamily="Arial Black" 
+            FontSize="12" 
+            Height="24" 
+            Background="Turquoise" 
+            Cursor="Hand" 
+            Click="ExportToPDF3_Click"/>
+
+        <!-- Label Food & Drinks List -->
+
+        <Label Content="Food &amp; Drinks List" 
+            Background="White"
+            VerticalAlignment="Top"
+            Margin="137,379,180,0" 
+            FontSize="15" 
+            Foreground="Black"
+            FontStyle="Italic" 
+            Height="25" 
+            RenderTransformOrigin="0.262,-0.333" 
+            FontFamily="Arial Black"/>
+
+        <!-- DataGrid4 (Add Food & Drinks List Details)-->
+
+        <DataGrid 
+            x:Name="DataGrid4" 
+            SelectionChanged="DataGrid_SelectionChanged" 
+            Margin="136,404,16,193" 
+            Cursor="Hand" 
+            FontFamily="Arial Black"
+            Background="FloralWhite">
+
+
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Turquoise"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                </Style>
+            </DataGrid.Resources>
+
+        </DataGrid>
+
+        <!-- Button Export4 (Add Food & Drinks List Details)-->
+        <Button 
+            x:Name="ExportToPDF4" 
+            Content="Export To PDF" 
+            HorizontalAlignment="Left" 
+            Margin="334,379,0,0" 
+            VerticalAlignment="Top" 
+            Width="106" 
+            FontFamily="Arial Black" 
+            FontSize="12" 
+            Height="22" 
+            Background="Turquoise" 
+            Cursor="Hand" 
+            Click="ExportToPDF4_Click"/>
+
+        <!--TextBox Search -->
+
+        <TextBox x:Name="txt_Search" 
+            FontSize="16"
+            FontWeight="Medium"
+            FontFamily="Arial Black"
+            Foreground="White"
+            CaretBrush="White"
+            BorderBrush="Red"
+            BorderThickness="0,0,0,2"
+            VerticalContentAlignment="Center"
+            Margin="191,67,65,589"
+            Padding="45,0,0,0" TextBlock.FontFamily="Arial Black">
+
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Images/search_txt.png"
+                    Stretch="None"
+                    AlignmentX="Left"/>
+            </TextBox.Background>
+
+        </TextBox>
+
+        <!-- Button Customer Search -->
+
+        <Button Style="{DynamicResource RoundedButtonStyle}"
+            x:Name="Search1" 
+            Content="Search" 
+            HorizontalAlignment="Left"
+            Margin="6,372,0,0" 
+            VerticalAlignment="Top" 
+            Cursor="Hand"
+            Height="30"
+            Width="96"
+            FontSize="18"
+            Background="LightGray"
+            Foreground="Black" 
+            RenderTransformOrigin="0.25,0.5"
+            FontFamily="Arial Black"
+            Click="Search"/>
+
+        <!-- Label Registration List-->
+
+        <Label Content="Registration List" 
+            Background="White"
+            VerticalAlignment="Top"
+            Margin="139,120,177,0" 
+            FontSize="15" 
+            Foreground="Black"
+            FontStyle="Italic" 
+            Height="27" 
+            RenderTransformOrigin="0.262,-0.333" 
+            FontFamily="Arial Black"/>
+
+        <!-- Button Clear -->
+
+        <Button Style="{DynamicResource RoundedButtonStyle}"
+            x:Name="Clear1" 
+            Content="Clear" 
+            HorizontalAlignment="Left"
+            Margin="13,482,0,0" 
+            VerticalAlignment="Top" 
+            Cursor="Hand"
+            Height="30"
+            Width="90"
+            FontSize="18"
+            Background="LightGray"
+            Foreground="Black" 
+            RenderTransformOrigin="0.25,0.5"
+            FontFamily="Arial Black"
+            Click="Clear"/>
+
+        <!-- Button View All Data -->
+
+        <Button Style="{DynamicResource RoundedButtonStyle}"
+            x:Name="View_all_data" 
+            Content="All Data" 
+            HorizontalAlignment="Left"
+            Margin="6,205,0,0" 
+            VerticalAlignment="Top" 
+            Cursor="Hand"
+            Height="30"
+            Width="96"
+            FontSize="18"
+            Background="LightGray"
+            Foreground="Black" 
+            RenderTransformOrigin="0.25,0.5"
+            FontFamily="Arial Black"
+            Click="View_all_data_1"/>
+
+        <!-- Button Delete -->
+
+        <Button Style="{DynamicResource RoundedButtonStyle}"
+            x:Name="Delete1" 
+            Content="Delete" 
+            HorizontalAlignment="Left"
+            Margin="9,426,0,0" 
+            VerticalAlignment="Top" 
+            Cursor="Hand"
+            Height="30"
+            Width="94"
+            FontSize="18"
+            Background="LightGray"
+            Foreground="Black" 
+            RenderTransformOrigin="0.25,0.5"
+            FontFamily="Arial Black"
+            Click="Delete"/>
+
+        <!-- Button Reset All Data -->
+        
+        <Button Style="{DynamicResource RoundedButtonStyle}"
+            x:Name="Reset_All" 
+            Content="Reset All&#xD;&#xA;    Data" 
+            HorizontalAlignment="Left"
+            Margin="7,538,0,0" 
+            VerticalAlignment="Top" 
+            Cursor="Hand"
+            Height="51"
+            Width="98"
+            FontSize="17"
+            Background="LightGray"
+            Foreground="Black" 
+            RenderTransformOrigin="0.25,0.5"
+            FontFamily="Arial Black"
+            Click="Reset_All_Customers_data"/>
+
+    </Grid>
+
+</Window>
