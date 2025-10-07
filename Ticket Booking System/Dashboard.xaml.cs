@@ -669,6 +669,10 @@ namespace Ticket_Booking_System
                     cnn4.ExecuteNonQuery();
 
                     MessageBox.Show("Customer Registration & Booking Details Deleted", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadGrid();
+                    LoadGrid2();
+                    LoadGrid3();
+                    LoadGrid4();
 
                     con1.Close();
                     con2.Close();
